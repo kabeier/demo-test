@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base:'/demo-test',
+   base: mode === "production" ? "/demo-test/" : "/",
   plugins: [react(), tailwindcss()],
     server: {
     allowedHosts: [

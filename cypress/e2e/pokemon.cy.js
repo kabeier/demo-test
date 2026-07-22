@@ -3,7 +3,7 @@ describe('template spec', () => {
     // Runs every time
     beforeEach(()=>{
         // visits application url
-        cy.visit('')
+        cy.visit('/')
     })
 
     it('should have Heading', ()=>{
