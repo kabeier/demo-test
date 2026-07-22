@@ -6,7 +6,7 @@ echo "BUILD COMPLETE"
 
 docker run \
   --rm \
-  -p 5174:5173 \
+  -p 5173:5173 \
   -v "$(pwd)":/app\
   --name react-container2\
   react-img2
