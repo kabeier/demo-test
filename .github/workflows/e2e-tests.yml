@@ -1,0 +1,39 @@
+name: E2E Tests
+
+on:
+    pull_request:
+        branches:
+            - main
+    push:
+        branches:
+            - dev
+            - main
+    
+    workflow_dispatch:
+
+jobs:
+    cypress-run:
+        runs-on: ubuntu-latest
+
+        steps:
+            #  checkout my codebase
+            - name: Checkout repository
+              uses: actions/checkout@v7
+            #  set up the node environment
+            - name: set up Node.js
+              uses: actions/setup-node@v6
+              with:
+                node-version: 24
+                # This caches the download packages bewteen workflows, to make it run faster
+                cache: npm
+            #  install the projects dependencies
+            - name: Install dependencies
+              # This ensures npm install uses your package-lock.json
+              run: npm ci
+            #  run cypress
+            - name: execute cypress
+              uses: cypress-io/github-action@v7
+              with:
+                browser: electron
+                start: npm run dev
+                wait-on: /
