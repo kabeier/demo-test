@@ -36,4 +36,4 @@ jobs:
               with:
                 browser: electron
                 start: npm run dev
-                wait-on: /
+                wait-on: http://localhost:5173/demo-test
